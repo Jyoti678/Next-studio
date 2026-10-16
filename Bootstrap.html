@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+
+    <title>SmartWeb | Responsive Website</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #167c73;
+            --bs-primary: #167c73;
+            --bs-primary-rgb: 22, 124, 115;
+            --dark: #111827;
+            --muted: #6b7280;
+            --light: #f1f7f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            color: var(--dark);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .brand-dot {
+            color: var(--primary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #111827, #164e48);
+            color: white;
+            padding: 110px 0 100px;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: #a7f3d0;
+        }
+
+        .hero p {
+            color: #d1d5db;
+            max-width: 560px;
+            line-height: 1.8;
+        }
+
+        .hero-visual {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .visual-icon {
+            font-size: 5rem;
+            color: #a7f3d0;
+        }
+
+        /* Shared sections */
+        .section-padding {
+            padding: 85px 0;
+        }
+
+        .section-label {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .text-muted-custom {
+            color: var(--muted);
+        }
+
+        /* Service cards */
+        .service-card {
+            height: 100%;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            transition: transform 0.25s, box-shadow 0.25s;
+            background: white;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(31, 41, 55, 0.1);
+        }
+
+        .service-icon {
+            display: inline-flex;
+            width: 58px;
+            height: 58px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: #e6f4f1;
+            color: var(--primary);
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+        }
+
+        .btn-brand {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 12px 22px;
+            font-weight: 600;
+        }
+
+        .btn-brand:hover {
+            background: #12665f;
+            border-color: #12665f;
+            color: white;
+        }
+
+        .btn-outline-light {
+            border-radius: 10px;
+            padding: 12px 22px;
+        }
+
+        /* Contact */
+        .contact-panel {
+            background: var(--light);
+            border-radius: 24px;
+            padding: clamp(24px, 5vw, 48px);
+        }
+
+        .form-control {
+            padding: 12px 14px;
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(22, 124, 115, 0.15);
+        }
+
+        footer {
+            background: var(--dark);
+            color: #d1d5db;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.25rem;
+            margin-left: 14px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                SmartWeb<span class="brand-dot">.</span>
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item mt-2 mt-lg-0">
+                        <a href="#contact" class="btn btn-brand">
+                            Get Started <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="badge rounded-pill text-bg-light mb-4 px-3 py-2">
+                        <i class="bi bi-stars"></i> Modern Web Experience
+                    </span>
+
+                    <h1>
+                        Build better.<br>
+                        Design <span>smarter.</span>
+                    </h1>
+
+                    <p class="fs-5 mt-4 mb-4">
+                        Create beautiful, responsive, and user-friendly
+                        digital experiences that work on every device.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#services" class="btn btn-brand">
+                            Explore Services
+                            <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                        <a href="#about" class="btn btn-outline-light">
+                            Discover More
+                        </a>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-4 mt-5">
+                        <div>
+                            <h4 class="fw-bold mb-0">100%</h4>
+                            <small class="text-white-50">Responsive layout</small>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-0">3+</h4>
+                            <small class="text-white-50">Core services</small>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-0">24/7</h4>
+                            <small class="text-white-50">Online access</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="hero-visual text-center">
+                        <i class="bi bi-window-stack visual-icon"></i>
+                        <h3 class="fw-bold mt-3">One Design. Every Screen.</h3>
+                        <p class="mb-0 mx-auto">
+                            A flexible layout powered by Bootstrap's
+                            responsive grid system.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <i class="bi bi-phone fs-2"></i>
+                            <i class="bi bi-tablet fs-2"></i>
+                            <i class="bi bi-laptop fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="section-label">Who We Are</span>
+                    <h2 class="section-title display-6 mt-2">
+                        Simplicity meets functionality
+                    </h2>
+                    <p class="text-muted-custom mt-3">
+                        We use modern web technologies to build websites
+                        that are easy to navigate, visually appealing,
+                        and accessible across devices.
+                    </p>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                        <div>
+                            <h6 class="fw-bold">Responsive by design</h6>
+                            <p class="text-muted-custom">
+                                Content adapts to the available screen width.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <i class="bi bi-check-circle-fill text-primary fs-4"></i>
+                        <div>
+                            <h6 class="fw-bold">Easy to maintain</h6>
+                            <p class="text-muted-custom">
+                                Reusable Bootstrap components simplify development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="p-4 p-md-5 rounded-4 bg-light text-center">
+                        <i class="bi bi-code-slash display-1 text-primary"></i>
+                        <h3 class="fw-bold mt-3">Clean Code</h3>
+                        <p class="text-muted-custom mb-0">
+                            HTML + CSS + Bootstrap + JavaScript
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section-padding bg-light" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-label">What We Offer</span>
+                <h2 class="section-title display-6 mt-2">Our Services</h2>
+                <p class="text-muted-custom">
+                    Everything you need to start building for the web.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h4 class="fw-bold">Web Design</h4>
+                        <p class="text-muted-custom">
+                            Design clean layouts with consistent colors,
+                            typography, and spacing.
+                        </p>
+                        <a href="#contact"
+                           class="text-primary text-decoration-none fw-semibold">
+                            Learn more <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h4 class="fw-bold">Development</h4>
+                        <p class="text-muted-custom">
+                            Build responsive interfaces using HTML,
+                            CSS, Bootstrap, and JavaScript.
+                        </p>
+                        <a href="#contact"
+                           class="text-primary text-decoration-none fw-semibold">
+                            Learn more <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h4 class="fw-bold">Responsive UI</h4>
+                        <p class="text-muted-custom">
+                            Make interfaces usable on phones,
+                            tablets, laptops, and desktops.
+                        </p>
+                        <a href="#contact"
+                           class="text-primary text-decoration-none fw-semibold">
+                            Learn more <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="contact-panel">
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <span class="section-label">Get In Touch</span>
+                        <h2 class="section-title display-6 mt-2">
+                            Let's talk about your idea.
+                        </h2>
+                        <p class="text-muted-custom mt-3">
+                            Fill out the form and see how client-side
+                            form validation works.
+                        </p>
+                        <p class="mt-4">
+                            <i class="bi bi-envelope text-primary me-2"></i>
+                            hello@example.com
+                        </p>
+                        <p>
+                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                            Available online worldwide
+                        </p>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label fw-semibold">
+                                    Full Name
+                                </label>
+                                <input type="text" class="form-control"
+                                       id="fullName" name="fullName"
+                                       placeholder="Your name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-semibold">
+                                    Email Address
+                                </label>
+                                <input type="email" class="form-control"
+                                       id="email" name="email"
+                                       placeholder="you@example.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label fw-semibold">
+                                    Your Message
+                                </label>
+                                <textarea class="form-control"
+                                          id="message" name="message"
+                                          rows="4" placeholder="Tell us about your idea"
+                                          required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-brand w-100">
+                                Send Message <i class="bi bi-send ms-1"></i>
+                            </button>
+
+                            <div id="formFeedback" class="mt-3"
+                                 role="status" aria-live="polite"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row
+                        justify-content-between align-items-center gap-3">
+                <p class="mb-0">
+                    © <span id="year"></span> SmartWeb. All rights reserved.
+                </p>
+                <div>
+                    <a href="#home" class="social-link" aria-label="Home">
+                        <i class="bi bi-house"></i>
+                    </a>
+                    <a href="#services" class="social-link" aria-label="Services">
+                        <i class="bi bi-grid"></i>
+                    </a>
+                    <a href="#contact" class="social-link" aria-label="Contact">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Update the footer year automatically
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Demonstrate client-side form validation
+        const contactForm = document.getElementById("contactForm");
+        const feedback = document.getElementById("formFeedback");
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+
+            feedback.className = "mt-3 alert alert-success";
+            feedback.textContent =
+                "Form validated successfully! Connect a backend to send this message.";
+
+            contactForm.reset();
+        });
+    </script>
+
+</body>
+</html>
